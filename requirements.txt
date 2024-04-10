@@ -1,0 +1,9 @@
+pandas
+numpy
+jupyter
+matplotlib
+TA-Lib
+streamlit
+yfinance
+mplfinance
+quantstats
