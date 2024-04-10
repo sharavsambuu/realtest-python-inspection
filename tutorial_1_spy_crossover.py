@@ -131,19 +131,27 @@ position_df
 
 
 #%%
+# Tracking capital based on order
+
+initial_capital = 10000.0
+
+df['Return'] = df['Close'].pct_change()
+
+df['StratReturn'] = 0.0
+for index, row in position_df.iterrows():
+    sub_df = df[row['DateIn']:row['DateOut']]["Return"]
+    df.loc[sub_df.index, 'StratReturn'] = sub_df
+
+
+df['GrowthFactor'] = (1 + df['StratReturn']).cumprod()
+df['Equity'      ] = initial_capital*df['GrowthFactor']
+
+df['Equity'].plot()
 
 
 #%%
-
-
-#%%
-
-
-
-#%%
-
-
-#%%
+print(f"Initial equity : {initial_capital}")
+print(f"Final equity   : {round(df.iloc[-1]['Equity'], 2)}")
 
 
 #%%
