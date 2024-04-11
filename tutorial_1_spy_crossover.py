@@ -162,23 +162,22 @@ print(f"Final equity   : {round(df.iloc[-1]['Equity'], 2)}")
 
 
 #%%
-
-
-#%%
-
+qs.plots.snapshot(df['StratReturn'], title='SPY Crossover', show=True);
 
 #%%
-
-
-#%%
-
-
+qs.plots.drawdown(df['StratReturn']);
 
 #%%
-
+qs.plots.drawdowns_periods(df['StratReturn'])
 
 #%%
+qs.plots.histogram(df['StratReturn'])
 
+#%%
+qs.plots.monthly_heatmap(df['StratReturn'])
+
+#%%
+qs.stats.sharpe(df['StratReturn'])
 
 #%%
 
